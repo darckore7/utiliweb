@@ -1,769 +1,139 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="UtiliWeb: herramientas online gratuitas, rápidas y fáciles de usar.">
-
-  <meta name="theme-color" content="#0f172a">
-
-  <title>UtiliWeb — Herramientas online gratis</title>
-
+  <meta name="description" content="UtiliWeb: herramientas online gratis para cálculos, conversiones, fechas, texto y más.">
+  <meta name="theme-color" content="#111827">
+  <title>UtiliWeb — Herramientas gratis online</title>
   <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
-<header class="topbar">
-
-  <div class="container nav">
-
-    <a class="brand" href="#inicio">
-
-      <span class="brand-mark">U</span>
-
-      <span>UtiliWeb</span>
-
-    </a>
-
-    <button id="themeToggle" class="icon-btn" type="button">
-
-      🌙
-
-    </button>
-
+<header class="header">
+  <div class="container header-content">
+    <a href="#" class="logo">Utili<span>Web</span></a>
+    <button id="themeBtn" class="icon-btn" aria-label="Cambiar tema">🌙</button>
   </div>
-
 </header>
-
-<main id="inicio">
-
-<section class="hero">
-
-  <div class="container hero-content">
-
-    <span class="eyebrow">⚡ GRATIS · RÁPIDO · SIN REGISTRO</span>
-
-    <h1>
-
-      Herramientas útiles,
-
-      <br>
-
-      <span>en un solo lugar.</span>
-
-    </h1>
-
-    <p>
-
-      Calcula, convierte y organiza tus tareas diarias desde cualquier dispositivo.
-
-    </p>
-
-    <div class="search-wrap">
-
+<main class="container">
+  <section class="hero">
+    <span class="badge">✨ Gratis y fácil de usar</span>
+    <h1>Tus herramientas útiles,<br><span>en un solo lugar.</span></h1>
+    <p>Calcula, convierte, genera y consulta herramientas online desde cualquier dispositivo.</p>
+    <div class="search-box">
       <span>🔎</span>
-
-      <input
-
-        id="toolSearch"
-
-        type="search"
-
-        placeholder="¿Qué necesitas calcular o convertir?"
-
-        autocomplete="off"
-
-      >
-
+      <input type="text" id="searchInput" placeholder="Buscar una herramienta...">
     </div>
-
+  </section>
+  <div id="categories" class="categories">
+    <button class="category active" data-category="all">Todas</button>
+    <button class="category" data-category="calculadoras">🧮 Calculadoras</button>
+    <button class="category" data-category="conversiones">🔄 Conversiones</button>
+    <button class="category" data-category="fechas">📅 Fechas</button>
+    <button class="category" data-category="texto">📝 Texto</button>
+    <button class="category" data-category="generadores">⚡ Generadores</button>
   </div>
-
-</section>
-
-<section class="container ad-slot">
-
-  <span>Espacio para publicidad</span>
-
-</section>
-
-<section class="container tools-section">
-
-  <div class="section-heading">
-
-    <div>
-
-      <span class="eyebrow">HERRAMIENTAS</span>
-
-      <h2>Todo lo que necesitas</h2>
-
-    </div>
-
-    <span id="toolCount" class="tool-count"></span>
-
-  </div>
-
-  <div id="toolsGrid" class="tools-grid">
-
-    <article
-
-      class="tool-card"
-
-      data-tool="calculadora calculator matematicas operaciones"
-
-    >
-
+  <section id="toolsGrid" class="tools-grid">
+    <article class="tool-card" data-category="calculadoras" data-name="calculadora">
       <div class="tool-icon">🧮</div>
-
-      <h3>Calculadora</h3>
-
-      <p>
-
-        Realiza operaciones matemáticas rápidamente.
-
-      </p>
-
-      <button class="open-tool" data-modal="calculatorModal">
-
-        Usar herramienta →
-
-      </button>
-
-    </article>
-
-    <article
-
-      class="tool-card"
-
-      data-tool="conversion unidades longitud peso temperatura metros kilometros kilos celsius"
-
-    >
-
-      <div class="tool-icon">📏</div>
-
-      <h3>Conversor de unidades</h3>
-
-      <p>
-
-        Convierte longitud, peso y temperatura.
-
-      </p>
-
-      <button class="open-tool" data-modal="unitModal">
-
-        Usar herramienta →
-
-      </button>
-
-    </article>
-
-    <article
-
-      class="tool-card"
-
-      data-tool="moneda divisas dolar euro peso mexicano usd eur mxn"
-
-    >
-
-      <div class="tool-icon">💱</div>
-
-      <h3>Conversor de moneda</h3>
-
-      <p>
-
-        Convierte entre MXN, USD y EUR con tasas editables.
-
-      </p>
-
-      <button class="open-tool" data-modal="currencyModal">
-
-        Usar herramienta →
-
-      </button>
-
-    </article>
-
-    <article
-
-      class="tool-card"
-
-      data-tool="temporizador timer cronometro cuenta regresiva tiempo"
-
-    >
-
-      <div class="tool-icon">⏱️</div>
-
-      <h3>Temporizador</h3>
-
-      <p>
-
-        Configura una cuenta regresiva para cualquier tarea.
-
-      </p>
-
-      <button class="open-tool" data-modal="timerModal">
-
-        Usar herramienta →
-
-      </button>
-
-    </article>
-
-  </div>
-
-  <div id="noResults" class="no-results hidden">
-
-    <div>🔎</div>
-
-    <h3>No encontramos esa herramienta</h3>
-
-    <p>Prueba con otra palabra.</p>
-
-  </div>
-
-</section>
-
-<section class="container ad-slot ad-slot-large">
-
-  <span>Espacio para publicidad</span>
-
-</section>
-
-</main>
-
-<footer>
-
-  <div class="container footer-inner">
-
-    <div>
-
-      <a class="brand footer-brand" href="#inicio">
-
-        <span class="brand-mark">U</span>
-
-        <span>UtiliWeb</span>
-
-      </a>
-
-      <p>
-
-        Herramientas sencillas para el día a día.
-
-      </p>
-
-    </div>
-
-    <div class="footer-links">
-
-      <a href="#inicio">Inicio</a>
-
-      <a href="#" id="privacyLink">Privacidad</a>
-
-    </div>
-
-  </div>
-
-  <div class="container copyright">
-
-    © <span id="year"></span> UtiliWeb. Todos los derechos reservados.
-
-  </div>
-
-</footer>
-
-<!-- CALCULADORA -->
-
-<dialog id="calculatorModal" class="modal">
-
-  <div class="modal-head">
-
-    <div>
-
-      <span class="modal-kicker">HERRAMIENTA</span>
-
       <h2>Calculadora</h2>
-
-    </div>
-
-    <button class="close-modal" aria-label="Cerrar">
-
-      ×
-
-    </button>
-
-  </div>
-
-  <div class="calculator">
-
-    <input
-
-      id="calcDisplay"
-
-      class="calc-display"
-
-      type="text"
-
-      value="0"
-
-      readonly
-
-      aria-label="Resultado"
-
-    >
-
-    <div class="calc-grid">
-
-      <button data-calc="clear" class="danger">C</button>
-
-      <button data-calc="back">⌫</button>
-
-      <button data-calc="operator">÷</button>
-
-      <button data-calc="operator">×</button>
-
-      <button data-calc="number">7</button>
-
-      <button data-calc="number">8</button>
-
-      <button data-calc="number">9</button>
-
-      <button data-calc="operator">−</button>
-
-      <button data-calc="number">4</button>
-
-      <button data-calc="number">5</button>
-
-      <button data-calc="number">6</button>
-
-      <button data-calc="operator">+</button>
-
-      <button data-calc="number">1</button>
-
-      <button data-calc="number">2</button>
-
-      <button data-calc="number">3</button>
-
-      <button data-calc="equals" class="equals">
-
-        =
-
-      </button>
-
-      <button data-calc="number" class="zero">
-
-        0
-
-      </button>
-
-      <button data-calc="number">
-
-        .
-
-      </button>
-
-    </div>
-
-  </div>
-
-</dialog>
-
-<!-- CONVERSOR DE UNIDADES -->
-
-<dialog id="unitModal" class="modal">
-
-  <div class="modal-head">
-
-    <div>
-
-      <span class="modal-kicker">HERRAMIENTA</span>
-
-      <h2>Conversor de unidades</h2>
-
-    </div>
-
-    <button class="close-modal" aria-label="Cerrar">
-
-      ×
-
-    </button>
-
-  </div>
-
-  <div class="form-stack">
-
-    <label>
-
-      Tipo
-
-      <select id="unitType">
-
-        <option value="length">
-
-          Longitud
-
-        </option>
-
-        <option value="weight">
-
-          Peso
-
-        </option>
-
-        <option value="temperature">
-
-          Temperatura
-
-        </option>
-
-      </select>
-
-    </label>
-
-    <div class="two-col">
-
-      <label>
-
-        De
-
-        <select id="unitFrom"></select>
-
-      </label>
-
-      <label>
-
-        A
-
-        <select id="unitTo"></select>
-
-      </label>
-
-    </div>
-
-    <label>
-
-      Valor
-
-      <input
-
-        id="unitValue"
-
-        type="number"
-
-        inputmode="decimal"
-
-        placeholder="Ej. 10"
-
-      >
-
-    </label>
-
-    <div id="unitResult" class="result-box">
-
-      Introduce un valor para convertir.
-
-    </div>
-
-  </div>
-
-</dialog>
-
-<!-- CONVERSOR DE MONEDA -->
-
-<dialog id="currencyModal" class="modal">
-
-  <div class="modal-head">
-
-    <div>
-
-      <span class="modal-kicker">HERRAMIENTA</span>
-
-      <h2>Conversor de moneda</h2>
-
-    </div>
-
-    <button class="close-modal" aria-label="Cerrar">
-
-      ×
-
-    </button>
-
-  </div>
-
-  <div class="notice">
-
-    Las tasas son de ejemplo y se pueden editar.
-
-    No se consulta una API externa.
-
-  </div>
-
-  <div class="form-stack">
-
-    <div class="two-col">
-
-      <label>
-
-        De
-
-        <select id="currencyFrom">
-
-          <option>MXN</option>
-
-          <option>USD</option>
-
-          <option>EUR</option>
-
-        </select>
-
-      </label>
-
-      <label>
-
-        A
-
-        <select id="currencyTo">
-
-          <option>USD</option>
-
-          <option>MXN</option>
-
-          <option>EUR</option>
-
-        </select>
-
-      </label>
-
-    </div>
-
-    <label>
-
-      Valor
-
-      <input
-
-        id="currencyValue"
-
-        type="number"
-
-        inputmode="decimal"
-
-        placeholder="Ej. 100"
-
-      >
-
-    </label>
-
-    <div class="rates">
-
-      <label>
-
-        1 USD =
-
-        <input
-
-          id="rateUsdMxn"
-
-          type="number"
-
-          step="0.0001"
-
-          value="18.00"
-
-        >
-
-        MXN
-
-      </label>
-
-      <label>
-
-        1 EUR =
-
-        <input
-
-          id="rateEurMxn"
-
-          type="number"
-
-          step="0.0001"
-
-          value="20.90"
-
-        >
-
-        MXN
-
-      </label>
-
-    </div>
-
-    <div id="currencyResult" class="result-box">
-
-      Introduce un valor para convertir.
-
-    </div>
-
-  </div>
-
-</dialog>
-
-<!-- TEMPORIZADOR -->
-
-<dialog id="timerModal" class="modal">
-
-  <div class="modal-head">
-
-    <div>
-
-      <span class="modal-kicker">HERRAMIENTA</span>
-
+      <p>Realiza operaciones matemáticas básicas.</p>
+      <button onclick="openTool('calculator')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="calculadoras" data-name="porcentaje calcular porcentaje">
+      <div class="tool-icon">📊</div>
+      <h2>Porcentajes</h2>
+      <p>Calcula porcentajes de forma rápida.</p>
+      <button onclick="openTool('percentage')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="calculadoras" data-name="edad calculadora edad">
+      <div class="tool-icon">🎂</div>
+      <h2>Calculadora de edad</h2>
+      <p>Calcula tu edad exacta.</p>
+      <button onclick="openTool('age')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="calculadoras" data-name="imc peso altura indice masa corporal">
+      <div class="tool-icon">⚖️</div>
+      <h2>Calculadora de IMC</h2>
+      <p>Calcula tu índice de masa corporal.</p>
+      <button onclick="openTool('bmi')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="calculadoras" data-name="prestamo mensual préstamo">
+      <div class="tool-icon">💰</div>
+      <h2>Préstamo</h2>
+      <p>Calcula pagos mensuales estimados.</p>
+      <button onclick="openTool('loan')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="conversiones" data-name="temperatura celsius fahrenheit">
+      <div class="tool-icon">🌡️</div>
+      <h2>Temperatura</h2>
+      <p>Convierte Celsius, Fahrenheit y Kelvin.</p>
+      <button onclick="openTool('temperature')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="conversiones" data-name="longitud metros kilómetros millas pies">
+      <div class="tool-icon">📏</div>
+      <h2>Longitud</h2>
+      <p>Convierte metros, kilómetros, millas y pies.</p>
+      <button onclick="openTool('length')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="conversiones" data-name="peso kilos libras gramos">
+      <div class="tool-icon">⚖️</div>
+      <h2>Peso</h2>
+      <p>Convierte kilogramos, gramos y libras.</p>
+      <button onclick="openTool('weight')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="fechas" data-name="diferencia fechas días">
+      <div class="tool-icon">📅</div>
+      <h2>Días entre fechas</h2>
+      <p>Descubre cuántos días hay entre dos fechas.</p>
+      <button onclick="openTool('dateDiff')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="texto" data-name="contador palabras caracteres texto">
+      <div class="tool-icon">📝</div>
+      <h2>Contador de texto</h2>
+      <p>Cuenta palabras, caracteres y líneas.</p>
+      <button onclick="openTool('textCounter')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="generadores" data-name="contraseña password segura">
+      <div class="tool-icon">🔐</div>
+      <h2>Generador de contraseñas</h2>
+      <p>Crea contraseñas aleatorias y seguras.</p>
+      <button onclick="openTool('password')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="generadores" data-name="número aleatorio random">
+      <div class="tool-icon">🎲</div>
+      <h2>Número aleatorio</h2>
+      <p>Genera un número dentro de un rango.</p>
+      <button onclick="openTool('random')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="generadores" data-name="cronómetro">
+      <div class="tool-icon">⏱️</div>
+      <h2>Cronómetro</h2>
+      <p>Mide el tiempo fácilmente.</p>
+      <button onclick="openTool('stopwatch')">Abrir herramienta</button>
+    </article>
+    <article class="tool-card" data-category="generadores" data-name="temporizador timer">
+      <div class="tool-icon">⏰</div>
       <h2>Temporizador</h2>
-
-    </div>
-
-    <button class="close-modal" aria-label="Cerrar">
-
-      ×
-
-    </button>
-
+      <p>Configura una cuenta regresiva.</p>
+      <button onclick="openTool('timer')">Abrir herramienta</button>
+    </article>
+  </section>
+  <p id="noResults" class="no-results hidden">No encontramos herramientas con esa búsqueda.</p>
+</main>
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <button class="close-btn" onclick="closeTool()">×</button>
+    <div id="modalContent"></div>
   </div>
-
-  <div class="timer">
-
-    <div id="timerDisplay" class="timer-display">
-
-      05:00
-
-    </div>
-
-    <div class="timer-inputs">
-
-      <label>
-
-        Minutos
-
-        <input
-
-          id="timerMinutes"
-
-          type="number"
-
-          min="0"
-
-          max="999"
-
-          value="5"
-
-        >
-
-      </label>
-
-      <label>
-
-        Segundos
-
-        <input
-
-          id="timerSeconds"
-
-          type="number"
-
-          min="0"
-
-          max="59"
-
-          value="0"
-
-        >
-
-      </label>
-
-    </div>
-
-    <div class="timer-actions">
-
-      <button id="timerStart" class="primary-btn">
-
-        Iniciar
-
-      </button>
-
-      <button id="timerPause" class="secondary-btn">
-
-        Pausar
-
-      </button>
-
-      <button id="timerReset" class="secondary-btn">
-
-        Reiniciar
-
-      </button>
-
-    </div>
-
-    <p id="timerStatus" class="timer-status">
-
-      Listo.
-
-    </p>
-
+</div>
+<footer>
+  <div class="container footer-content">
+    <strong>UtiliWeb</strong>
+    <p>Herramientas útiles, rápidas y gratuitas.</p>
+    <p>© 2026 UtiliWeb</p>
   </div>
-
-</dialog>
-
-<!-- PRIVACIDAD -->
-
-<dialog id="privacyModal" class="modal">
-
-  <div class="modal-head">
-
-    <div>
-
-      <span class="modal-kicker">INFORMACIÓN</span>
-
-      <h2>Privacidad</h2>
-
-    </div>
-
-    <button class="close-modal" aria-label="Cerrar">
-
-      ×
-
-    </button>
-
-  </div>
-
-  <div class="form-stack">
-
-    <p>
-
-      Esta primera versión de UtiliWeb funciona principalmente
-
-      en tu dispositivo y no requiere crear una cuenta.
-
-      Si posteriormente agregas Google AdSense, analítica u
-
-      otros servicios, deberás actualizar esta política para
-
-      informar sobre las cookies, datos y terceros correspondientes.
-
-    </p>
-
-  </div>
-
-</dialog>
-
+</footer>
 <script src="script.js"></script>
-
 </body>
-
 </html>
