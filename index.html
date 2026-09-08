@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="UtiliWeb: herramientas online gratuitas, rápidas y fáciles de usar.">
+
+  <meta name="theme-color" content="#0f172a">
+
+  <title>UtiliWeb — Herramientas online gratis</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <div class="container nav">
+
+    <a class="brand" href="#inicio">
+
+      <span class="brand-mark">U</span>
+
+      <span>UtiliWeb</span>
+
+    </a>
+
+    <button id="themeToggle" class="icon-btn" type="button">
+
+      🌙
+
+    </button>
+
+  </div>
+
+</header>
+
+<main id="inicio">
+
+<section class="hero">
+
+  <div class="container hero-content">
+
+    <span class="eyebrow">⚡ GRATIS · RÁPIDO · SIN REGISTRO</span>
+
+    <h1>
+
+      Herramientas útiles,
+
+      <br>
+
+      <span>en un solo lugar.</span>
+
+    </h1>
+
+    <p>
+
+      Calcula, convierte y organiza tus tareas diarias desde cualquier dispositivo.
+
+    </p>
+
+    <div class="search-wrap">
+
+      <span>🔎</span>
+
+      <input
+
+        id="toolSearch"
+
+        type="search"
+
+        placeholder="¿Qué necesitas calcular o convertir?"
+
+        autocomplete="off"
+
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="container ad-slot">
+
+  <span>Espacio para publicidad</span>
+
+</section>
+
+<section class="container tools-section">
+
+  <div class="section-heading">
+
+    <div>
+
+      <span class="eyebrow">HERRAMIENTAS</span>
+
+      <h2>Todo lo que necesitas</h2>
+
+    </div>
+
+    <span id="toolCount" class="tool-count"></span>
+
+  </div>
+
+  <div id="toolsGrid" class="tools-grid">
+
+    <article
+
+      class="tool-card"
+
+      data-tool="calculadora calculator matematicas operaciones"
+
+    >
+
+      <div class="tool-icon">🧮</div>
+
+      <h3>Calculadora</h3>
+
+      <p>
+
+        Realiza operaciones matemáticas rápidamente.
+
+      </p>
+
+      <button class="open-tool" data-modal="calculatorModal">
+
+        Usar herramienta →
+
+      </button>
+
+    </article>
+
+    <article
+
+      class="tool-card"
+
+      data-tool="conversion unidades longitud peso temperatura metros kilometros kilos celsius"
+
+    >
+
+      <div class="tool-icon">📏</div>
+
+      <h3>Conversor de unidades</h3>
+
+      <p>
+
+        Convierte longitud, peso y temperatura.
+
+      </p>
+
+      <button class="open-tool" data-modal="unitModal">
+
+        Usar herramienta →
+
+      </button>
+
+    </article>
+
+    <article
+
+      class="tool-card"
+
+      data-tool="moneda divisas dolar euro peso mexicano usd eur mxn"
+
+    >
+
+      <div class="tool-icon">💱</div>
+
+      <h3>Conversor de moneda</h3>
+
+      <p>
+
+        Convierte entre MXN, USD y EUR con tasas editables.
+
+      </p>
+
+      <button class="open-tool" data-modal="currencyModal">
+
+        Usar herramienta →
+
+      </button>
+
+    </article>
+
+    <article
+
+      class="tool-card"
+
+      data-tool="temporizador timer cronometro cuenta regresiva tiempo"
+
+    >
+
+      <div class="tool-icon">⏱️</div>
+
+      <h3>Temporizador</h3>
+
+      <p>
+
+        Configura una cuenta regresiva para cualquier tarea.
+
+      </p>
+
+      <button class="open-tool" data-modal="timerModal">
+
+        Usar herramienta →
+
+      </button>
+
+    </article>
+
+  </div>
+
+  <div id="noResults" class="no-results hidden">
+
+    <div>🔎</div>
+
+    <h3>No encontramos esa herramienta</h3>
+
+    <p>Prueba con otra palabra.</p>
+
+  </div>
+
+</section>
+
+<section class="container ad-slot ad-slot-large">
+
+  <span>Espacio para publicidad</span>
+
+</section>
+
+</main>
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+
+      <a class="brand footer-brand" href="#inicio">
+
+        <span class="brand-mark">U</span>
+
+        <span>UtiliWeb</span>
+
+      </a>
+
+      <p>
+
+        Herramientas sencillas para el día a día.
+
+      </p>
+
+    </div>
+
+    <div class="footer-links">
+
+      <a href="#inicio">Inicio</a>
+
+      <a href="#" id="privacyLink">Privacidad</a>
+
+    </div>
+
+  </div>
+
+  <div class="container copyright">
+
+    © <span id="year"></span> UtiliWeb. Todos los derechos reservados.
+
+  </div>
+
+</footer>
+
+<!-- CALCULADORA -->
+
+<dialog id="calculatorModal" class="modal">
+
+  <div class="modal-head">
+
+    <div>
+
+      <span class="modal-kicker">HERRAMIENTA</span>
+
+      <h2>Calculadora</h2>
+
+    </div>
+
+    <button class="close-modal" aria-label="Cerrar">
+
+      ×
+
+    </button>
+
+  </div>
+
+  <div class="calculator">
+
+    <input
+
+      id="calcDisplay"
+
+      class="calc-display"
+
+      type="text"
+
+      value="0"
+
+      readonly
+
+      aria-label="Resultado"
+
+    >
+
+    <div class="calc-grid">
+
+      <button data-calc="clear" class="danger">C</button>
+
+      <button data-calc="back">⌫</button>
+
+      <button data-calc="operator">÷</button>
+
+      <button data-calc="operator">×</button>
+
+      <button data-calc="number">7</button>
+
+      <button data-calc="number">8</button>
+
+      <button data-calc="number">9</button>
+
+      <button data-calc="operator">−</button>
+
+      <button data-calc="number">4</button>
+
+      <button data-calc="number">5</button>
+
+      <button data-calc="number">6</button>
+
+      <button data-calc="operator">+</button>
+
+      <button data-calc="number">1</button>
+
+      <button data-calc="number">2</button>
+
+      <button data-calc="number">3</button>
+
+      <button data-calc="equals" class="equals">
+
+        =
+
+      </button>
+
+      <button data-calc="number" class="zero">
+
+        0
+
+      </button>
+
+      <button data-calc="number">
+
+        .
+
+      </button>
+
+    </div>
+
+  </div>
+
+</dialog>
+
+<!-- CONVERSOR DE UNIDADES -->
+
+<dialog id="unitModal" class="modal">
+
+  <div class="modal-head">
+
+    <div>
+
+      <span class="modal-kicker">HERRAMIENTA</span>
+
+      <h2>Conversor de unidades</h2>
+
+    </div>
+
+    <button class="close-modal" aria-label="Cerrar">
+
+      ×
+
+    </button>
+
+  </div>
+
+  <div class="form-stack">
+
+    <label>
+
+      Tipo
+
+      <select id="unitType">
+
+        <option value="length">
+
+          Longitud
+
+        </option>
+
+        <option value="weight">
+
+          Peso
+
+        </option>
+
+        <option value="temperature">
+
+          Temperatura
+
+        </option>
+
+      </select>
+
+    </label>
+
+    <div class="two-col">
+
+      <label>
+
+        De
+
+        <select id="unitFrom"></select>
+
+      </label>
+
+      <label>
+
+        A
+
+        <select id="unitTo"></select>
+
+      </label>
+
+    </div>
+
+    <label>
+
+      Valor
+
+      <input
+
+        id="unitValue"
+
+        type="number"
+
+        inputmode="decimal"
+
+        placeholder="Ej. 10"
+
+      >
+
+    </label>
+
+    <div id="unitResult" class="result-box">
+
+      Introduce un valor para convertir.
+
+    </div>
+
+  </div>
+
+</dialog>
+
+<!-- CONVERSOR DE MONEDA -->
+
+<dialog id="currencyModal" class="modal">
+
+  <div class="modal-head">
+
+    <div>
+
+      <span class="modal-kicker">HERRAMIENTA</span>
+
+      <h2>Conversor de moneda</h2>
+
+    </div>
+
+    <button class="close-modal" aria-label="Cerrar">
+
+      ×
+
+    </button>
+
+  </div>
+
+  <div class="notice">
+
+    Las tasas son de ejemplo y se pueden editar.
+
+    No se consulta una API externa.
+
+  </div>
+
+  <div class="form-stack">
+
+    <div class="two-col">
+
+      <label>
+
+        De
+
+        <select id="currencyFrom">
+
+          <option>MXN</option>
+
+          <option>USD</option>
+
+          <option>EUR</option>
+
+        </select>
+
+      </label>
+
+      <label>
+
+        A
+
+        <select id="currencyTo">
+
+          <option>USD</option>
+
+          <option>MXN</option>
+
+          <option>EUR</option>
+
+        </select>
+
+      </label>
+
+    </div>
+
+    <label>
+
+      Valor
+
+      <input
+
+        id="currencyValue"
+
+        type="number"
+
+        inputmode="decimal"
+
+        placeholder="Ej. 100"
+
+      >
+
+    </label>
+
+    <div class="rates">
+
+      <label>
+
+        1 USD =
+
+        <input
+
+          id="rateUsdMxn"
+
+          type="number"
+
+          step="0.0001"
+
+          value="18.00"
+
+        >
+
+        MXN
+
+      </label>
+
+      <label>
+
+        1 EUR =
+
+        <input
+
+          id="rateEurMxn"
+
+          type="number"
+
+          step="0.0001"
+
+          value="20.90"
+
+        >
+
+        MXN
+
+      </label>
+
+    </div>
+
+    <div id="currencyResult" class="result-box">
+
+      Introduce un valor para convertir.
+
+    </div>
+
+  </div>
+
+</dialog>
+
+<!-- TEMPORIZADOR -->
+
+<dialog id="timerModal" class="modal">
+
+  <div class="modal-head">
+
+    <div>
+
+      <span class="modal-kicker">HERRAMIENTA</span>
+
+      <h2>Temporizador</h2>
+
+    </div>
+
+    <button class="close-modal" aria-label="Cerrar">
+
+      ×
+
+    </button>
+
+  </div>
+
+  <div class="timer">
+
+    <div id="timerDisplay" class="timer-display">
+
+      05:00
+
+    </div>
+
+    <div class="timer-inputs">
+
+      <label>
+
+        Minutos
+
+        <input
+
+          id="timerMinutes"
+
+          type="number"
+
+          min="0"
+
+          max="999"
+
+          value="5"
+
+        >
+
+      </label>
+
+      <label>
+
+        Segundos
+
+        <input
+
+          id="timerSeconds"
+
+          type="number"
+
+          min="0"
+
+          max="59"
+
+          value="0"
+
+        >
+
+      </label>
+
+    </div>
+
+    <div class="timer-actions">
+
+      <button id="timerStart" class="primary-btn">
+
+        Iniciar
+
+      </button>
+
+      <button id="timerPause" class="secondary-btn">
+
+        Pausar
+
+      </button>
+
+      <button id="timerReset" class="secondary-btn">
+
+        Reiniciar
+
+      </button>
+
+    </div>
+
+    <p id="timerStatus" class="timer-status">
+
+      Listo.
+
+    </p>
+
+  </div>
+
+</dialog>
+
+<!-- PRIVACIDAD -->
+
+<dialog id="privacyModal" class="modal">
+
+  <div class="modal-head">
+
+    <div>
+
+      <span class="modal-kicker">INFORMACIÓN</span>
+
+      <h2>Privacidad</h2>
+
+    </div>
+
+    <button class="close-modal" aria-label="Cerrar">
+
+      ×
+
+    </button>
+
+  </div>
+
+  <div class="form-stack">
+
+    <p>
+
+      Esta primera versión de UtiliWeb funciona principalmente
+
+      en tu dispositivo y no requiere crear una cuenta.
+
+      Si posteriormente agregas Google AdSense, analítica u
+
+      otros servicios, deberás actualizar esta política para
+
+      informar sobre las cookies, datos y terceros correspondientes.
+
+    </p>
+
+  </div>
+
+</dialog>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
