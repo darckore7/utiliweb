@@ -1,139 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="UtiliWeb: herramientas online gratis para cálculos, conversiones, fechas, texto y más.">
-  <meta name="theme-color" content="#111827">
-  <title>UtiliWeb — Herramientas gratis online</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UtiliWeb</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header class="header">
-  <div class="container header-content">
-    <a href="#" class="logo">Utili<span>Web</span></a>
-    <button id="themeBtn" class="icon-btn" aria-label="Cambiar tema">🌙</button>
-  </div>
+
+<header>
+    <h1>🛠️ UtiliWeb</h1>
+    <p>Herramientas útiles y gratuitas</p>
 </header>
-<main class="container">
-  <section class="hero">
-    <span class="badge">✨ Gratis y fácil de usar</span>
-    <h1>Tus herramientas útiles,<br><span>en un solo lugar.</span></h1>
-    <p>Calcula, convierte, genera y consulta herramientas online desde cualquier dispositivo.</p>
-    <div class="search-box">
-      <span>🔎</span>
-      <input type="text" id="searchInput" placeholder="Buscar una herramienta...">
+
+<main>
+
+    <div class="tools">
+
+        <button class="tool-card" onclick="openTool('calculator')">
+            🧮
+            <span>Calculadora</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('percentage')">
+            📊
+            <span>Porcentajes</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('age')">
+            🎂
+            <span>Calculadora de edad</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('bmi')">
+            ⚖️
+            <span>Calculadora de IMC</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('temperature')">
+            🌡️
+            <span>Temperatura</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('length')">
+            📏
+            <span>Longitud</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('weight')">
+            ⚖️
+            <span>Peso</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('date')">
+            📅
+            <span>Días entre fechas</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('text')">
+            📝
+            <span>Contador de texto</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('password')">
+            🔐
+            <span>Contraseñas</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('random')">
+            🎲
+            <span>Número aleatorio</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('stopwatch')">
+            ⏱️
+            <span>Cronómetro</span>
+        </button>
+
+        <button class="tool-card" onclick="openTool('timer')">
+            ⏰
+            <span>Temporizador</span>
+        </button>
+
     </div>
-  </section>
-  <div id="categories" class="categories">
-    <button class="category active" data-category="all">Todas</button>
-    <button class="category" data-category="calculadoras">🧮 Calculadoras</button>
-    <button class="category" data-category="conversiones">🔄 Conversiones</button>
-    <button class="category" data-category="fechas">📅 Fechas</button>
-    <button class="category" data-category="texto">📝 Texto</button>
-    <button class="category" data-category="generadores">⚡ Generadores</button>
-  </div>
-  <section id="toolsGrid" class="tools-grid">
-    <article class="tool-card" data-category="calculadoras" data-name="calculadora">
-      <div class="tool-icon">🧮</div>
-      <h2>Calculadora</h2>
-      <p>Realiza operaciones matemáticas básicas.</p>
-      <button onclick="openTool('calculator')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="calculadoras" data-name="porcentaje calcular porcentaje">
-      <div class="tool-icon">📊</div>
-      <h2>Porcentajes</h2>
-      <p>Calcula porcentajes de forma rápida.</p>
-      <button onclick="openTool('percentage')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="calculadoras" data-name="edad calculadora edad">
-      <div class="tool-icon">🎂</div>
-      <h2>Calculadora de edad</h2>
-      <p>Calcula tu edad exacta.</p>
-      <button onclick="openTool('age')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="calculadoras" data-name="imc peso altura indice masa corporal">
-      <div class="tool-icon">⚖️</div>
-      <h2>Calculadora de IMC</h2>
-      <p>Calcula tu índice de masa corporal.</p>
-      <button onclick="openTool('bmi')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="calculadoras" data-name="prestamo mensual préstamo">
-      <div class="tool-icon">💰</div>
-      <h2>Préstamo</h2>
-      <p>Calcula pagos mensuales estimados.</p>
-      <button onclick="openTool('loan')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="conversiones" data-name="temperatura celsius fahrenheit">
-      <div class="tool-icon">🌡️</div>
-      <h2>Temperatura</h2>
-      <p>Convierte Celsius, Fahrenheit y Kelvin.</p>
-      <button onclick="openTool('temperature')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="conversiones" data-name="longitud metros kilómetros millas pies">
-      <div class="tool-icon">📏</div>
-      <h2>Longitud</h2>
-      <p>Convierte metros, kilómetros, millas y pies.</p>
-      <button onclick="openTool('length')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="conversiones" data-name="peso kilos libras gramos">
-      <div class="tool-icon">⚖️</div>
-      <h2>Peso</h2>
-      <p>Convierte kilogramos, gramos y libras.</p>
-      <button onclick="openTool('weight')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="fechas" data-name="diferencia fechas días">
-      <div class="tool-icon">📅</div>
-      <h2>Días entre fechas</h2>
-      <p>Descubre cuántos días hay entre dos fechas.</p>
-      <button onclick="openTool('dateDiff')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="texto" data-name="contador palabras caracteres texto">
-      <div class="tool-icon">📝</div>
-      <h2>Contador de texto</h2>
-      <p>Cuenta palabras, caracteres y líneas.</p>
-      <button onclick="openTool('textCounter')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="generadores" data-name="contraseña password segura">
-      <div class="tool-icon">🔐</div>
-      <h2>Generador de contraseñas</h2>
-      <p>Crea contraseñas aleatorias y seguras.</p>
-      <button onclick="openTool('password')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="generadores" data-name="número aleatorio random">
-      <div class="tool-icon">🎲</div>
-      <h2>Número aleatorio</h2>
-      <p>Genera un número dentro de un rango.</p>
-      <button onclick="openTool('random')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="generadores" data-name="cronómetro">
-      <div class="tool-icon">⏱️</div>
-      <h2>Cronómetro</h2>
-      <p>Mide el tiempo fácilmente.</p>
-      <button onclick="openTool('stopwatch')">Abrir herramienta</button>
-    </article>
-    <article class="tool-card" data-category="generadores" data-name="temporizador timer">
-      <div class="tool-icon">⏰</div>
-      <h2>Temporizador</h2>
-      <p>Configura una cuenta regresiva.</p>
-      <button onclick="openTool('timer')">Abrir herramienta</button>
-    </article>
-  </section>
-  <p id="noResults" class="no-results hidden">No encontramos herramientas con esa búsqueda.</p>
+
 </main>
+
 <div id="modal" class="modal hidden">
-  <div class="modal-box">
-    <button class="close-btn" onclick="closeTool()">×</button>
-    <div id="modalContent"></div>
-  </div>
+
+    <div class="modal-box">
+
+        <button class="close-btn" onclick="closeTool()">×</button>
+
+        <div id="modalContent"></div>
+
+    </div>
+
 </div>
-<footer>
-  <div class="container footer-content">
-    <strong>UtiliWeb</strong>
-    <p>Herramientas útiles, rápidas y gratuitas.</p>
-    <p>© 2026 UtiliWeb</p>
-  </div>
-</footer>
-<script src="script.js"></script>
+
+<script src="./script.js"></script>
+
 </body>
 </html>
